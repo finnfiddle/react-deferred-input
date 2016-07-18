@@ -6,7 +6,7 @@ npm install react-deferred-input
 
 ## What is the purpose of this component?
 
-Form inputs in react can either be controller or uncontrolled (see [here](https://facebook.github.io/react/docs/forms.html)). Controlled components always display the `value` prop they are passed and need to trigger the `onChange` handler every time a character is added or removed from them so that they can be updated. Uncontrolled components render the initial `defaultValue` prop they get passed and after that they render what the user types into them.
+Form inputs in React can either be controller or uncontrolled (see [here](https://facebook.github.io/react/docs/forms.html)). Controlled components always display the `value` prop they are passed and need to trigger the `onChange` handler every time a character is added or removed so that they can be updated. Uncontrolled components render the initial `defaultValue` prop they get passed and after that they render what the user types into them.
 
 This component gives you the functionality of a controlled component that always displays the `value` prop that it is given EXCEPT when a user is focused on the input then it waits till the user blurs and then only triggers the `onChange` (and `onBlur`) handlers if the value has change.
 

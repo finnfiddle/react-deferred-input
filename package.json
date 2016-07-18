@@ -1,17 +1,17 @@
 {
-    "name": "react-npm-boilerplate",
-    "version": "1.0.0",
-    "description": "Boilerplate for creating React Npm packages with ES2015",
+    "name": "react-deferred-input",
+    "version": "0.2.1",
+    "description": "React input component that defers onChange handler until input is blurred",
     "repository": {
         "type": "git",
-        "url": "https://github.com/juliancwirko/react-npm-boilerplate.git"
+        "url": "https://github.com/finnfiddle/react-deferred-input"
     },
-    "author": "Julian Ćwirko",
+    "author": "Finn Fitzsimons",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/juliancwirko/react-npm-boilerplate/issues"
+        "url": "https://github.com/finnfiddle/react-deferred-input/issues"
     },
-    "homepage": "https://github.com/juliancwirko/react-npm-boilerplate",
+    "homepage": "https://github.com/finnfiddle/react-deferred-input",
     "keywords": [
         "react-component",
         "react"
