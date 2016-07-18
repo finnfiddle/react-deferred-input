@@ -1,27 +1,50 @@
-# Boilerplate for creating React Npm packages with ES2015
+# React Deferred Input
 
-The package is based on [npm-base](https://github.com/kadirahq/npm-base) package by [Kadira](https://github.com/kadirahq) which is really great when you want to prepare Npm package. This one is prepared to be used as a starter point for React components which needs to be published on Npm.
+```bash
+npm install react-deferred-input
+```
 
-It includes linting with [ESLint](http://eslint.org/) and testing with [Mocha](https://mochajs.org/), [Enzyme](http://airbnb.io/enzyme/) and [JSDOM](https://github.com/tmpvar/jsdom).
+## What is the purpose of this component?
 
-Also there is of course ES6 transpilation.
+Form inputs in react can either be controller or uncontrolled (see [here](https://facebook.github.io/react/docs/forms.html)). Controlled components always display the `value` prop they are passed and need to trigger the `onChange` handler every time a character is added or removed from them so that they can be updated. Uncontrolled components render the initial `defaultValue` prop they get passed and after that they render what the user types into them.
 
-## Usage
+This component gives you the functionality of a controlled component that always displays the `value` prop that it is given EXCEPT when a user is focused on the input then it waits till the user blurs and then only triggers the `onChange` (and `onBlur`) handlers if the value has change.
 
-1. Clone this repo
-2. Inside cloned repo run `npm install`
-3. If you want to run tests: `npm test` or `npm run testonly` or `npm run test-watch`. You need to write tests in `__tests__` folder. You need at least Node 4 on your machine to run tests.
-4. If you want to run linting: `npm test` or `npm run lint`. Fix bugs: `npm run lint-fix`. You can adjust your `.eslintrc` config file.
-5. If you want to run transpilation to ES5 in `dist` folder: `npm run prepublish` (standard npm hook).
+This can dramatically reduce the number of network requests that get sent.
 
-## Blog post about it:
+## Example Usage
 
-- [Creating React NPM packages with ES2015](http://julian.io/creating-react-npm-packages-with-es2015/)
+```javascript
+import React, { Component } from 'react';
+import DeferredInput from 'react-deferred-input';
 
-## Also check out
+class MyComponent extends Component {
+  render() {
+    return (
+      <DeferredInput value='initial value' onChange={this.handleChange} />
+    );
+  }
 
-- [React Alert UI component](https://github.com/juliancwirko/react-s-alert)
-- [React project boilerplate with Webpack, HMR, React Router](https://github.com/juliancwirko/react-boilerplate)
+  handleChange(value) {
+    console.log("this is only called when the input is blurred with the value: ", value);
+  }
+}
+
+```
+
+## Options/Available props
+
+| Prop Name      | Description                                                       | Default Value       |
+|----------------|-------------------------------------------------------------------|---------------------|
+| value          | input value                                                       | String: ''          |
+| onChange       | handler called with one argument (input value) on blur (required) | Function: undefined |
+| onBlur         | handler called with one argument (input value) on blur            | Function: undefined |
+| blurOnEnter    | should input blur when press ENTER key                            | Boolean: false      |
+| focusOnMount   | should input be focused when initially mounted                    | Boolean: false      |
+| clearOnChange  | should input value be cleared on blur                             | Boolean: false      |
+| inputComponent | component to be used for actual input                             | 'input'             |
+
+Any other custom props will be passed on to input component.
 
 ## License
 
