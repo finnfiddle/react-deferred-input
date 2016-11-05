@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 // keyboard key codes
 const KEY_CODES = {
@@ -26,12 +25,15 @@ class DeferredInput extends Component {
     this.state = { value: '' };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // update state with props
     this.setState({ value: this.props.value || '' });
+  }
+
+  componentDidMount() {
     // focus on element when it mounts if `props.focusOnMount` is set to true
     if (this.props.focusOnMount) {
-      this.focus.call(this);
+      setTimeout(() => this.focus.call(this), 500);
     }
   }
 
@@ -67,6 +69,10 @@ class DeferredInput extends Component {
       'onBlur',
       'isInput',
       'onKeyDown',
+      'blurOnEnter',
+      'focusOnMount',
+      'clearOnChange',
+      'inputComponent',
     ];
 
     return Object.assign({}, omit(this.props, privateProps), {
@@ -89,12 +95,12 @@ class DeferredInput extends Component {
 
   // trigger blur on element
   blur() {
-    this.callMethodOnElementOrChild(ReactDOM.findDOMNode(this.refs.input), 'blur');
+    this.callMethodOnElementOrChild(this.input, 'blur');
   }
 
   // trigger focus on element
   focus() {
-    this.callMethodOnElementOrChild(ReactDOM.findDOMNode(this.refs.input), 'focus');
+    this.callMethodOnElementOrChild(this.input, 'focus');
   }
 
   // key down event handler
@@ -107,7 +113,16 @@ class DeferredInput extends Component {
   }
 
   render() {
-    return <this.props.inputComponent {...this.getChildProps()} ref='input' />;
+    return (
+      <this.props.inputComponent
+        {...this.getChildProps()}
+        ref={
+          c => {
+            this.input = c;
+          }
+        }
+      />
+    );
   }
 }
 

@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'react', 'react-dom'], factory);
+    define(['exports', 'react'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('react'), require('react-dom'));
+    factory(exports, require('react'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.react, global.reactDom);
+    factory(mod.exports, global.react);
     global.index = mod.exports;
   }
-})(this, function (exports, _react, _reactDom) {
+})(this, function (exports, _react) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,8 +18,6 @@
   });
 
   var _react2 = _interopRequireDefault(_react);
-
-  var _reactDom2 = _interopRequireDefault(_reactDom);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -124,13 +122,21 @@
     }
 
     _createClass(DeferredInput, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
+      key: 'componentWillMount',
+      value: function componentWillMount() {
         // update state with props
         this.setState({ value: this.props.value || '' });
+      }
+    }, {
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        var _this2 = this;
+
         // focus on element when it mounts if `props.focusOnMount` is set to true
         if (this.props.focusOnMount) {
-          this.focus.call(this);
+          setTimeout(function () {
+            return _this2.focus.call(_this2);
+          }, 500);
         }
       }
     }, {
@@ -161,7 +167,7 @@
     }, {
       key: 'getChildProps',
       value: function getChildProps() {
-        var privateProps = ['value', 'onChange', 'onBlur', 'isInput', 'onKeyDown'];
+        var privateProps = ['value', 'onChange', 'onBlur', 'isInput', 'onKeyDown', 'blurOnEnter', 'focusOnMount', 'clearOnChange', 'inputComponent'];
 
         return Object.assign({}, omit(this.props, privateProps), {
           value: isSet(this.state.value) ? this.state.value : '',
@@ -173,25 +179,25 @@
     }, {
       key: 'callMethodOnElementOrChild',
       value: function callMethodOnElementOrChild(element, action) {
-        var _this2 = this;
+        var _this3 = this;
 
         if (['TEXTAREA', 'INPUT'].indexOf(element.tagName) > -1) {
           return element[action]();
         } else if (element.childNodes.length) {
           [].forEach.call(element.childNodes, function (child) {
-            return _this2.callMethodOnElementOrChild(child, action);
+            return _this3.callMethodOnElementOrChild(child, action);
           });
         }
       }
     }, {
       key: 'blur',
       value: function blur() {
-        this.callMethodOnElementOrChild(_reactDom2.default.findDOMNode(this.refs.input), 'blur');
+        this.callMethodOnElementOrChild(this.input, 'blur');
       }
     }, {
       key: 'focus',
       value: function focus() {
-        this.callMethodOnElementOrChild(_reactDom2.default.findDOMNode(this.refs.input), 'focus');
+        this.callMethodOnElementOrChild(this.input, 'focus');
       }
     }, {
       key: 'handleKeyDown',
@@ -205,7 +211,13 @@
     }, {
       key: 'render',
       value: function render() {
-        return _react2.default.createElement(this.props.inputComponent, _extends({}, this.getChildProps(), { ref: 'input' }));
+        var _this4 = this;
+
+        return _react2.default.createElement(this.props.inputComponent, _extends({}, this.getChildProps(), {
+          ref: function ref(c) {
+            _this4.input = c;
+          }
+        }));
       }
     }]);
 
