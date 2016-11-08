@@ -4,7 +4,7 @@
 npm install react-deferred-input
 ```
 
-See demo [HERE](https://finnfiddle.github.io/react-deffered-input).
+See demo [HERE](https://finnfiddle.github.io/react-deferred-input).
 
 ## What is the purpose of this component?
 
