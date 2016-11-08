@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "npm run compile:watch",
-    "compile": "npm run clean && npm run copy && (npm run pug & npm run less & npm run js)",
+    "compile": "npm run clean && npm run copy && (npm run pug & npm run less & npm run js)", 
     "compile:watch": "npm run clean && npm run copy && (npm run pug:watch & npm run less:watch & npm run js:watch)",
     "clean": "rm -rf ./dist",
     "copy": "cp -a lib/. ./dist/",
