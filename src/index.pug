@@ -1,0 +1,122 @@
+include mixins.pug
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="chrome=1")
+    title #{title} by #{githubUser}
+
+    link(rel="stylesheet" href="dist/css/styles.css")
+    link(rel="stylesheet" href="dist/css/github-light.css")
+    link(
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css"
+    )
+    link(rel="stylesheet" href="dist/css/custom.css")
+    meta(name="viewport" content="width=device-width")
+    <!--[if lt IE 9]>
+    script(src="//html5shiv.googlecode.com/svn/trunk/html5.js")
+    <![endif]-->
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js")
+  body
+    .wrapper
+      header
+        h1= title
+        p= description
+
+        p.view
+          a(href=`https://github.com/${githubUser}/${name}`) View the Project on GitHub
+            small #{githubUser}/#{name}
+
+        ul
+          li
+            a(href=`https://github.com/${githubUser}/${name}/zipball/master`) Download
+              strong ZIP File
+          li
+            a(href=`https://github.com/${githubUser}/${name}/tarball/master`) Download
+              strong TAR Ball
+          li
+            a(href=`https://github.com/${githubUser}/${name}`) View On
+              strong GitHub
+
+      section
+
+        +heading Basic Example
+        +code('html')
+          :escape
+            <DeferredInput
+              value='initial value'
+              onChange={value => alert(value)}
+              focusOnMount={true}
+            />
+        #example-1
+
+        .divider 
+
+        +heading Blur On Enter
+        +code('html')
+          :escape
+            <DeferredInput
+              value='initial value'
+              onChange={value => alert(value)}
+              blurOnEnter={true}
+            />
+        #example-2
+
+        .divider 
+
+        +heading Clear On Change
+        +code('html')
+          :escape
+            <DeferredInput
+              value='initial value'
+              onChange={value => alert(value)}
+              clearOnChange={true}
+            />
+        #example-3
+
+        .divider 
+
+        +heading Custom Input Component
+        +code('html')
+          :escape
+            <DeferredInput
+              value='initial value'
+              onChange={value => alert(value)}
+              inputComponent='textarea'
+            />
+        #example-4
+
+        .divider 
+
+        +code('html')
+          :escape
+            class CustomInput extends React.Component {
+              render() {
+                return (
+                  <input
+                    style={{ borderColor: 'cyan' }}
+                    {...this.props}
+                  />
+                );
+              }
+            }
+
+            <DeferredInput
+              value='initial value'
+              onChange={value => alert(value)}
+              inputComponent={CustomInput}
+            />
+        #example-5
+
+
+      footer
+        p This project is maintained by&nbsp;
+          a(href=`https://github.com/${githubUser}`)= githubUser
+        p
+          small Hosted on GitHub Pages &mdash; Theme by&nbsp;
+            a(href="https://github.com/orderedlist") orderedlist
+
+    script hljs.initHighlightingOnLoad();
+    script(src="dist/js/scale.fix.js")
+    script(src="dist/js/bundle.js")

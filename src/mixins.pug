@@ -1,0 +1,17 @@
+mixin heading
+  h3
+    block
+
+mixin code(type)
+  pre
+    code(class=type)
+      block
+
+mixin react(id)
+  div(id=id)
+  | <script type='text/javascript'>
+  | var component =
+  block
+  | ReactDOM.render(component
+  | , document.getElementById(id));
+  | </script>

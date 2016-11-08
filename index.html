@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>React Deferred Input Demo by finnfiddle</title>
+    <link rel="stylesheet" href="dist/css/styles.css">
+    <link rel="stylesheet" href="dist/css/github-light.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/styles/atom-one-light.min.css">
+    <link rel="stylesheet" href="dist/css/custom.css">
+    <meta name="viewport" content="width=device-width"><!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>React Deferred Input Demo</h1>
+        <p>React input component that defers onChange handler until input is blurred</p>
+        <p class="view"><a href="https://github.com/finnfiddle/react-deferred-input">View the Project on GitHub<small>finnfiddle/react-deferred-input</small></a></p>
+        <ul>
+          <li><a href="https://github.com/finnfiddle/react-deferred-input/zipball/master">Download<strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/finnfiddle/react-deferred-input/tarball/master">Download<strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/finnfiddle/react-deferred-input">View On<strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>Basic Example
+        </h3>
+        <pre><code class="html">&lt;DeferredInput
+  value=&#39;initial value&#39;
+  onChange={value =&gt; alert(value)}
+  focusOnMount={true}
+/&gt;</code></pre>
+        <div id="example-1"></div>
+        <div class="divider"> </div>
+        <h3>Blur On Enter
+        </h3>
+        <pre><code class="html">&lt;DeferredInput
+  value=&#39;initial value&#39;
+  onChange={value =&gt; alert(value)}
+  blurOnEnter={true}
+/&gt;</code></pre>
+        <div id="example-2"></div>
+        <div class="divider"> </div>
+        <h3>Clear On Change
+        </h3>
+        <pre><code class="html">&lt;DeferredInput
+  value=&#39;initial value&#39;
+  onChange={value =&gt; alert(value)}
+  clearOnChange={true}
+/&gt;</code></pre>
+        <div id="example-3"></div>
+        <div class="divider"> </div>
+        <h3>Custom Input Component
+        </h3>
+        <pre><code class="html">&lt;DeferredInput
+  value=&#39;initial value&#39;
+  onChange={value =&gt; alert(value)}
+  inputComponent=&#39;textarea&#39;
+/&gt;</code></pre>
+        <div id="example-4"></div>
+        <div class="divider"> </div>
+        <pre><code class="html">class CustomInput extends React.Component {
+  render() {
+    return (
+      &lt;input
+        style={{ borderColor: &#39;cyan&#39; }}
+        {...this.props}
+      /&gt;
+    );
+  }
+}
+
+&lt;DeferredInput
+  value=&#39;initial value&#39;
+  onChange={value =&gt; alert(value)}
+  inputComponent={CustomInput}
+/&gt;</code></pre>
+        <div id="example-5"></div>
+      </section>
+      <footer>
+        <p>This project is maintained by&nbsp;<a href="https://github.com/finnfiddle">finnfiddle</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by&nbsp;<a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="dist/js/scale.fix.js"></script>
+    <script src="dist/js/bundle.js"></script>
+  </body>
+</html>
