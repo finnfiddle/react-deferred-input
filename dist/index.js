@@ -114,7 +114,7 @@
     function DeferredInput() {
       _classCallCheck(this, DeferredInput);
 
-      var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DeferredInput).call(this));
+      var _this = _possibleConstructorReturn(this, (DeferredInput.__proto__ || Object.getPrototypeOf(DeferredInput)).call(this));
 
       // initial state
       _this.state = { value: '' };
@@ -183,7 +183,7 @@
 
         if (['TEXTAREA', 'INPUT'].indexOf(element.tagName) > -1) {
           return element[action]();
-        } else if (element.childNodes.length) {
+        } else if (typeof element.childNodes !== 'undefined' && element.childNodes.length) {
           [].forEach.call(element.childNodes, function (child) {
             return _this3.callMethodOnElementOrChild(child, action);
           });
