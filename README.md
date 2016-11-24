@@ -4,6 +4,8 @@
 npm install react-deferred-input
 ```
 
+See demo [HERE](https://finnfiddle.github.io/react-deferred-input).
+
 ## What is the purpose of this component?
 
 Form inputs in React can either be controller or uncontrolled (see [here](https://facebook.github.io/react/docs/forms.html)). Controlled components always display the `value` prop they are passed and need to trigger the `onChange` handler every time a character is added or removed so that they can be updated. Uncontrolled components render the initial `defaultValue` prop they get passed and after that they render what the user types into them.
