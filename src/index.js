@@ -88,7 +88,7 @@ class DeferredInput extends Component {
   callMethodOnElementOrChild(element, action) {
     if (['TEXTAREA', 'INPUT'].indexOf(element.tagName) > -1) {
       return element[action]();
-    } else if (element.childNodes.length) {
+    } else if (typeof element.childNodes !== 'undefined' && element.childNodes.length) {
       [].forEach.call(element.childNodes, child => this.callMethodOnElementOrChild(child, action));
     }
   }
