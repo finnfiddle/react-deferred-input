@@ -12,7 +12,7 @@ Form inputs in React can either be controller or uncontrolled (see [here](https:
 
 This component gives you the functionality of a controlled component that always displays the `value` prop that it is given EXCEPT when a user is focused on the input then it waits till the user blurs and then only triggers the `onChange` (and `onBlur`) handlers if the value has change.
 
-This can dramatically reduce the number of network requests that get sent.
+This can dramatically reduce the number triggered events - ie. network requests.
 
 ## Example Usage
 
