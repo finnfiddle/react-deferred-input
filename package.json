@@ -1,6 +1,6 @@
 {
     "name": "react-deferred-input",
-    "version": "0.2.5",
+    "version": "0.3.5",
     "description": "React input component that defers onChange handler until input is blurred",
     "repository": {
         "type": "git",

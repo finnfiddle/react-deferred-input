@@ -93,14 +93,19 @@ class DeferredInput extends Component {
     }
   }
 
-  // trigger blur on element
+  // trigger blur on input element
   blur() {
     this.callMethodOnElementOrChild(this.input, 'blur');
   }
 
-  // trigger focus on element
+  // trigger focus on input element
   focus() {
     this.callMethodOnElementOrChild(this.input, 'focus');
+  }
+
+  // trigger select on input element
+  select() {
+    this.callMethodOnElementOrChild(this.input, 'select');
   }
 
   // key down event handler
